@@ -1,0 +1,13 @@
+package mehanicworkshop;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+@SpringBootApplication
+public class MehanicWorkshopApplication {
+
+	public static void main(String[] args) {
+		SpringApplication.run(MehanicWorkshopApplication.class, args);
+	}
+
+}
