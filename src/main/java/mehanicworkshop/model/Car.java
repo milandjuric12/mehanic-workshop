@@ -1,5 +1,6 @@
 package mehanicworkshop.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import org.hibernate.annotations.Type;
 
@@ -17,6 +18,7 @@ public class Car implements Serializable {
     @Column(name = "car_id")
     private Long carId;
 
+    @JsonIgnore
     @ManyToOne(fetch=FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name="customer_id", nullable=false)
     private Customer customer;

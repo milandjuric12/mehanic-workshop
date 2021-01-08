@@ -1,5 +1,6 @@
 package mehanicworkshop.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
@@ -24,8 +25,9 @@ public class Customer implements Serializable {
     @Column(name = "customer_id")
     private Long customerId;
 
-    @Fetch(value = FetchMode.SUBSELECT)
-    @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL, orphanRemoval = true)
+
+    @Fetch(value=FetchMode.SUBSELECT)
+    @OneToMany(mappedBy="customer", cascade=CascadeType.ALL, fetch=FetchType.LAZY, orphanRemoval=true)
     private Collection<Car> cars;
 
     @Type(type = "pg-uuid")
@@ -112,4 +114,5 @@ public class Customer implements Serializable {
     public void setCars(Collection<Car> cars) {
         this.cars = cars;
     }
+
 }

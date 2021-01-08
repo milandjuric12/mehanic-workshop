@@ -13,9 +13,9 @@ import java.util.UUID;
 @Repository
 public interface CarRepository extends JpaRepository<Car, Long> {
 
-    @Query("SELECT c FROM Car c WHERE c.carUuid = uuid")
+    @Query("SELECT c FROM Car c WHERE c.carUuid = :uuid")
     Optional<Car> findByUuid(@Param("uuid") final UUID uuid);
 
-    @Query("SELECT c from Car c WHERE c.customer.customerUuid = customerUuid")
-    Collection<Car> findByCustomerUuid(@Param("customerUuid") final UUID customerUuid);
+    @Query("SELECT c FROM Car c WHERE c.customer.customerUuid = :customerUuid")
+    Optional<Car> findByCustomerUuid(@Param("customerUuid") final UUID customerUuid);
 }

@@ -13,9 +13,10 @@ import java.util.UUID;
 @Repository
 public interface CustomerRepository extends JpaRepository<Customer, Long> {
 
-    @Query("SELECT c from Customer c WHERE c.customerUuid = uuid")
+    @Query("SELECT c from Customer c WHERE c.customerUuid = :uuid")
     Collection<Customer> findAllByUuid(@Param("uuid") final UUID uuid);
 
-    @Query("SELECT c from Customer c WHERE c.car.carUuid = carUuid")
-    Optional<Customer> findByCarUuid(@Param("carUuid") final UUID carUuid);
+    @Query("SELECT c from Customer c WHERE c.customerUuid = :uuid")
+    Optional<Customer> findByUuid(@Param("uuid") final UUID uuid);
+
 }
